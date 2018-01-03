@@ -11,9 +11,21 @@ public class ECDSAMain {
 	 
 	    @Inject
 	    ECDSA256Sign sign;
+	    
+	    @Inject
+	    ECDSA256Verify verify;
 	 
 	    public void testSignature(@Observes ContainerInitialized event) {
-	        System.out.println(sign.sign());
+	       
+	    	String signature = sign.sign();
+	    	
+	    	System.out.println(signature);
+	    	
+	    	boolean result = verify.verify(signature);
+	    	
+	    	System.out.println("Signature Valid: " + result);
+	    	
+	    	
 	    }
 	
 
