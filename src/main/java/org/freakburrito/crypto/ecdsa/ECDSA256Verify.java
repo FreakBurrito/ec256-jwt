@@ -5,6 +5,7 @@ import java.security.Signature;
 
 import javax.inject.Inject;
 
+// cribbed from https://stackoverflow.com/questions/11339788/tutorial-of-ecdsa-algorithm-to-sign-a-string
 public class ECDSA256Verify {
 
 	@Inject

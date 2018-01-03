@@ -1,15 +1,10 @@
 package org.freakburrito.crypto.ecdsa;
 
 import java.math.BigInteger;
-import java.security.KeyPair;
-import java.security.KeyPairGenerator;
-import java.security.PrivateKey;
-import java.security.PublicKey;
-import java.security.SecureRandom;
 import java.security.Signature;
 
 import javax.inject.Inject;
-
+// cribbed from https://stackoverflow.com/questions/11339788/tutorial-of-ecdsa-algorithm-to-sign-a-string
 public class ECDSA256Sign {
 	
 	
