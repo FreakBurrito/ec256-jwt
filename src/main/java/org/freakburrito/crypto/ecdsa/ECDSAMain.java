@@ -17,16 +17,27 @@ public class ECDSAMain {
 	 
 	    public void testSignature(@Observes ContainerInitialized event) {
 	       
-	    	String signature = sign.sign();
+	    	String data = "Data to sign";
+	    	
+	    	
+	    	String signature = sign.sign(data);
 	    	
 	    	System.out.println(signature);
 	    	
-	    	boolean result = verify.verify(signature);
+	    	boolean result = verify.verify(signature,data);
 	    	
 	    	System.out.println("Signature Valid: " + result);
 	    	
+	     	
+	    	boolean result2 = verify.verifyNewPublicKey(signature,data);
+	    	
+	    	System.out.println("Signature Valid: " + result2);
+	    	
+	    	
+	    	
 	    	
 	    }
+	    
 	
 
 }
