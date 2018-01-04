@@ -21,14 +21,14 @@ public class ECDSAPublicKey {
 
 	@PostConstruct
 	private void init() {
-
+		// https://stackoverflow.com/a/29355749
 		try {
-			ECPoint pubPoint = new ECPoint(new BigInteger(keyPair.publicKey.getW().getAffineX().toString()),
+			ECPoint publicKeyPoint = new ECPoint(new BigInteger(keyPair.publicKey.getW().getAffineX().toString()),
 					new BigInteger(keyPair.publicKey.getW().getAffineY().toString()));
 			AlgorithmParameters parameters = AlgorithmParameters.getInstance("EC", "SunEC");
 			parameters.init(new ECGenParameterSpec("secp256r1"));
 			ECParameterSpec ecParameters = parameters.getParameterSpec(ECParameterSpec.class);
-			ECPublicKeySpec pubSpec = new ECPublicKeySpec(pubPoint, ecParameters);
+			ECPublicKeySpec pubSpec = new ECPublicKeySpec(publicKeyPoint, ecParameters);
 			KeyFactory kf = KeyFactory.getInstance("EC");
 			publicKey = (ECPublicKey) kf.generatePublic(pubSpec);
 
