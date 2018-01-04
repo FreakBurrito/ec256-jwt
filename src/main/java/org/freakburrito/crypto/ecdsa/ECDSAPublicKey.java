@@ -23,8 +23,12 @@ public class ECDSAPublicKey {
 	private void init() {
 		// https://stackoverflow.com/a/29355749
 		try {
-			ECPoint publicKeyPoint = new ECPoint(new BigInteger(keyPair.publicKey.getW().getAffineX().toString()),
-					new BigInteger(keyPair.publicKey.getW().getAffineY().toString()));
+			
+			BigInteger x = new BigInteger(keyPair.publicKey.getW().getAffineX().toString());
+			BigInteger y = new BigInteger(keyPair.publicKey.getW().getAffineX().toString());
+			
+			
+			ECPoint publicKeyPoint = new ECPoint(x,y);
 			AlgorithmParameters parameters = AlgorithmParameters.getInstance("EC", "SunEC");
 			parameters.init(new ECGenParameterSpec("secp256r1"));
 			ECParameterSpec ecParameters = parameters.getParameterSpec(ECParameterSpec.class);
